@@ -12,7 +12,10 @@ include 'php/includes/header.php';
             <?php if (isset($_SESSION['email'])) { ?>
                 
             <?php } else { ?>
-                <a href="login.php">Login</a> | <a href="register.php">Register</a>
+                <a href="login.php" style="background-color: #202022; color: white; padding: 10px; text-decoration: none; border-radius: 15px;
+">Login</a> | 
+                <a href="register.php" style="background-color: #202022; color: white; padding: 10px; text-decoration: none; border-radius: 15px;
+">Register</a>
             <?php } ?>
         </div>
     </div>
