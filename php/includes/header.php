@@ -48,6 +48,75 @@
 
 			$("#login_form").validate();
 		});
+
+		
 	</script>
 	</head>
 	<body>
+	<head>
+    <style>
+        /* Position the Google Translate widget */
+        #google_translate_element {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 9999;
+            transform: scale(1.25);
+            transform-origin: top right;
+        }
+
+        /* Hide the "Powered by Google" */
+        .skiptranslate > iframe.skiptranslate {
+            display: none;
+        }
+
+        body {
+            top: 0px !important;
+        }
+
+        /* Set the size and style for the dropdown list */
+        .goog-te-menu-frame.skiptranslate {
+            width: 150px !important;
+            height: auto !important;
+            overflow-y: auto !important;
+        }
+
+        .goog-te-menu2 {
+            max-height: 400px !important;
+            overflow-y: auto !important;
+        }
+
+        .goog-te-menu2 table {
+            width: 100% !important;
+        }
+
+        .goog-te-menu2 td {
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .goog-te-menu2 .goog-te-menu2-item div {
+            padding: 4px 6px;
+        }
+
+        .goog-te-menu2-item div span.text {
+            display: block;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Translate widget -->
+    <div id="google_translate_element"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false,
+                includedLanguages: 'as,bn,gu,hi,kn,ml,mr,pa,ta,en,bho' // Add the Indian languages here
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>

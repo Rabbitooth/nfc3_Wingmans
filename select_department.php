@@ -2,15 +2,25 @@
 include 'pdo2.php';
 session_start();
 
-// Fetch regions from the database
-$regions = $pdo->query("SELECT * FROM regions")->fetchAll(PDO::FETCH_ASSOC);
+if (!isset($_POST['region_id'])) {
+    header('Location: login1.php');
+    exit();
+}
+
+$region_id = $_POST['region_id'];
+$_SESSION['region_id'] = $region_id;
+
+// Fetch departments from the selected region
+$departments = $pdo->prepare("SELECT * FROM departments WHERE region_id = :region_id");
+$departments->execute(['region_id' => $region_id]);
+$departments = $departments->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Select Region</title>
+    <title>Select Department</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -69,16 +79,16 @@ $regions = $pdo->query("SELECT * FROM regions")->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <div class="container d-flex justify-content-center">
         <div class="custom-container">
-            <h2>Select Your Region</h2>
-            <p>Please choose your region from the list below to proceed with the selection of your department.</p>
-            <form action="select_department.php" method="POST">
+            <h2>Select Department</h2>
+            <p>Please choose your department from the list below to proceed.</p>
+            <form action="select_case.php" method="POST">
                 <div class="mb-3">
-                    <label for="region" class="form-label">Region</label>
-                    <select id="region" name="region_id" class="form-select" required>
-                        <option value="">Choose a region</option>
-                        <?php foreach ($regions as $region): ?>
-                            <option value="<?= htmlspecialchars($region['id']) ?>">
-                                <?= htmlspecialchars($region['region_name']) ?>
+                    <label for="department" class="form-label">Department</label>
+                    <select id="department" name="department_id" class="form-select" required>
+                        <option value="">Choose a department</option>
+                        <?php foreach ($departments as $department): ?>
+                            <option value="<?= htmlspecialchars($department['id']) ?>">
+                                <?= htmlspecialchars($department['department_name']) ?>
                             </option>
                         <?php endforeach; ?>
                     </select>

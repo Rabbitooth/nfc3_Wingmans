@@ -2,15 +2,25 @@
 include 'pdo2.php';
 session_start();
 
-// Fetch regions from the database
-$regions = $pdo->query("SELECT * FROM regions")->fetchAll(PDO::FETCH_ASSOC);
+if (!isset($_POST['department_id'])) {
+    header('Location: select_department.php');
+    exit();
+}
+
+$department_id = $_POST['department_id'];
+$_SESSION['department_id'] = $department_id;
+
+// Fetch cases from the selected department
+$cases = $pdo->prepare("SELECT * FROM cases WHERE department_id = :department_id");
+$cases->execute(['department_id' => $department_id]);
+$cases = $cases->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Select Region</title>
+    <title>Select Case</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -69,16 +79,16 @@ $regions = $pdo->query("SELECT * FROM regions")->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <div class="container d-flex justify-content-center">
         <div class="custom-container">
-            <h2>Select Your Region</h2>
-            <p>Please choose your region from the list below to proceed with the selection of your department.</p>
-            <form action="select_department.php" method="POST">
+            <h2>Select Case</h2>
+            <p>Please choose the case from the list below to proceed.</p>
+            <form action="forum.php" method="POST">
                 <div class="mb-3">
-                    <label for="region" class="form-label">Region</label>
-                    <select id="region" name="region_id" class="form-select" required>
-                        <option value="">Choose a region</option>
-                        <?php foreach ($regions as $region): ?>
-                            <option value="<?= htmlspecialchars($region['id']) ?>">
-                                <?= htmlspecialchars($region['region_name']) ?>
+                    <label for="case" class="form-label">Case</label>
+                    <select id="case" name="case_id" class="form-select" required>
+                        <option value="">Choose a case</option>
+                        <?php foreach ($cases as $case): ?>
+                            <option value="<?= htmlspecialchars($case['id']) ?>">
+                                <?= htmlspecialchars($case['case_title']) ?>
                             </option>
                         <?php endforeach; ?>
                     </select>

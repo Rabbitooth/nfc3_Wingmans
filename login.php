@@ -95,62 +95,75 @@ if ($title == 'index')
 		});
 	</script>
 	<style type="text/css">
-		.right-side {
-			padding:0px;
-			background-size: cover;
-		}
+.right-side .form-control {
+    width: 100%;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 14px;
+}
 
-		.right-side h3 {
-			font-size: 30px;
-			font-weight: 700;
-			color: #000;
-			padding: 50px 10px 00px 50px;
-		}
 
-		.right-side p {
-			font-weight: 600;
-			color: #000;
-			padding: 10px 50px 10px 50px;
-		}
+.right-side .form-group {
+    margin-bottom: 15px;
+}
 
-		.form {
-			padding: 10px 50px;;
-		}
+.right-side input[type="text"], 
+.right-side input[type="password"] {
+    width: 70%; /* Adjust the width to make the text boxes smaller */
+	height: 35px;
+    margin: 0 auto; /* Center the text boxes */
+    border-radius: 15px; /* Add border radius */
+    padding: 10px;
+}
 
-		.form-control {
-			box-shadow: none !important;
-			border-radius: 0px !important;
-			border-bottom: 1px solid #2196f3 !important;
-			border-top: 1px !important;
-			border-left: none !important;
-			border-right: none !important;
-			padding-left: 19px;
-		}
+.right-side .btn-deep-purple {
+    background-color: #200202;
+    color: white;
+	float: right;
+    width: 20%;
+    padding: 7px;
+    border-radius: 15px; /* Add border radius to the button as well */
+    font-size: 16px;
+    cursor: pointer;
+}
 
-		.btn-deep-purple {
-			background: #2196f3;
-			border-radius: 18px;
-			padding: 5px 19px;
-			color: #FFF;
-			font-weight: 600;
-			float: right;
-			-webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.24);
-			-moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.24);
-			box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.24);
-		}
+.right-side .btn-deep-purple:hover {
+	background: #C70039;
+    transform: scale(1.05);
+}
 
-		.form-group {
-			margin-bottom: 20px;
-		}
+#forgotpassword {
+    color: #200202;
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+}
 
-		#forgotpassword:hover {
-			text-decoration: none;
-		}
+@media (max-width: 768px) {
+    .right-side {
+        padding: 20px;
+    }
+
+    .right-side input[type="text"], 
+    .right-side input[type="password"] {
+        width: 100%; /* Make the text boxes full width on smaller screens */
+    }
+}
+
 
 		.error {
 			color: red;
 			padding: 5px 0px;
 		}
+		
+#main {
+    padding-bottom: 45px; /* Adds space between the main content and the footer */
+}
+
+footer {
+    padding-top: 20px; /* Optional: Adds space at the top of the footer */
+}
+
 	</style>
 </head>
 
@@ -175,7 +188,7 @@ if ($title == 'index')
 						<!--col-sm-6-->
 
 						<div class="col-md-6 right-side">
-							<h3><img src="assets/images/lockscreen.png"> &nbsp; <span style="margin-bottom:20px; position:relative;">Login</span></h3>
+							<h3 style="padding-left:145px;"><img src="assets/images/lockscreen.png"> &nbsp; <span style="margin-bottom:20px;"><b>Login</b> </span></h3>
 							<div class="clearfix" style="padding-top: 20px;"></div>
 
 							<!--Form with header-->
@@ -185,14 +198,14 @@ if ($title == 'index')
 										<li id="error_message"></li>
 									</ul>
 
-									<div class="form-group">
-										<label for="email">Your e-mail</label>
-										<input id="email" name="email" type="text" class="form-control input-md text required email">
+										<div class="form-group">
+										<label for="email" style="padding-left:69px;">Your e-mail</label>
+										<input id="email" name="email" type="text"  class="form-control input-md text required email">
 										<label for="email" class="error" style="display:none;">This must be a valid email address</label>
 									</div>
 
 									<div class="form-group">
-										<label for="password">Your password</label>
+										<label for="password" style="padding-left:69px;">Your password</label>
 										<input name="password" type="password" id="password" class="form-control input-md text required" minlength="4" maxlength="20">
 
 									</div>
@@ -202,7 +215,7 @@ if ($title == 'index')
 											<button class="btn btn-deep-purple">Login</button>
 										</div>
 
-										<label class="centered info"><a id="forgotpassword" href="#" style="margin-top:10px;font-family: trebuchet ms;font-size: 13px;font-weight:normal;">Forgot password</a>
+										<label class="centered info"><a id="forgotpassword" href="#" style="margin-top:10px;font-family: trebuchet ms;font-size: 13px;font-weight:normal; padding-left:30px;">Forgot password</a>
 										</label>
 									</div>
 								</form>
