@@ -2,4 +2,4 @@ Crime Report is a web based application. This software provides facility for rep
 
 Crime Report project is to provide all crime management solutions which are easily accessible to everyone. The Crime application starts with the common people who want to log a complaint through the website so it can be very useful for police department to find out the problem in the society without people are coming to the police station every time.
 
-#Project for TSEC Hackathon 2024 
+Project for TSEC Hackathon 2024 
