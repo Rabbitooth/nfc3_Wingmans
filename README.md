@@ -45,6 +45,6 @@ Developed for the **TSEC Hackathon 2024**, this project emphasizes community con
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Rabbitooth/nfc3_Wingmans
+   git clone https://github.com/Rabbitooth/nfc3_Wingmans.git
    ```
 Open your browser and navigate to the application's URL (http://localhost/nfc3_Wingmans) (make sure xampp is installed and running and folder is in /htdocs)
